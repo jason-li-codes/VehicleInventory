@@ -16,7 +16,43 @@ public class VehicleInventory {
 
         int inventory = carCounter(carshop);
 
+        Scanner input = new Scanner(System.in);
 
+        boolean isRunning = true;
+        while (isRunning) {
+
+            System.out.println("""
+                            What would you like to do?
+                            (1) List all vehicles
+                            (2) Search by make/model
+                            (3) Search by price range
+                            (4) Search by color
+                            (5) Add a vehicle
+                            (6) Quit
+                            """);
+            int option = input.nextInt();
+
+            switch(option) {
+                case 1:
+                    listAllVehicles();
+                    break;
+                case 2:
+                    searchByMakemodel();
+                    break;
+                case 3:
+                    searchByPrice();
+                    break;
+                case 4:
+                    searchByColor();
+                    break;
+                case 5:
+                    addVehicle();
+                case 6:
+                    isRunning = false;
+                    break;
+            }
+
+        }
 
 
 
