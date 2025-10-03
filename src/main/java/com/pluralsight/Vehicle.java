@@ -14,7 +14,6 @@ public class Vehicle {
         this.color = "";
         this.odometerReading = 0;
         this.price = 0;
-
     }
 
     public Vehicle(long vehicleID, String makeModel, String color, int odometerReading, float price) {
