@@ -33,6 +33,7 @@ public class VehicleInventory {
                             (6) Quit
                             """);
             int option = input.nextInt();
+            input.nextLine();
 
             switch(option) {
                 case 1:
@@ -49,6 +50,7 @@ public class VehicleInventory {
                     break;
                 case 5:
                     addVehicle(carshop, input);
+                    break;
                 case 6:
                     isRunning = false;
                     System.out.println("ENDING PROGRAM...");
@@ -61,7 +63,7 @@ public class VehicleInventory {
 
     public static void printVehicleInfo(Vehicle car) {
 
-        System.out.printf("%s %s - ID: %d, odometer reading: %d, price: $%.2f",
+        System.out.printf("%s %s - ID: %d, odometer reading: %d, price: $%.2f\n",
                 car.getColor(), car.getMakeModel(), car.getVehicleID(),
                 car.getOdometerReading(), car.getPrice());
 
@@ -71,7 +73,7 @@ public class VehicleInventory {
 
         for (int i = 0; i < currentInventory; i++) {
             Vehicle car = carshop[i];
-            System.out.printf("Vehicle #%d", i);
+            System.out.printf("Vehicle #%d. ", i + 1);
             printVehicleInfo(car);
         }
     }
@@ -82,7 +84,9 @@ public class VehicleInventory {
         String searchMakemodel = input.nextLine();
 
         System.out.println("Here are cars matching that make/model:");
-        for (Vehicle car : carshop) {
+
+        for (int i = 0; i < currentInventory; i++) {
+            Vehicle car = carshop[i];
             if (car.getMakeModel().toLowerCase().contains(searchMakemodel.toLowerCase())) {
                 printVehicleInfo(car);
             }
@@ -98,7 +102,8 @@ public class VehicleInventory {
         int maxPrice = input.nextInt();
 
         System.out.println("Here are cars that match your budget:");
-        for (Vehicle car : carshop) {
+        for (int i = 0; i < currentInventory; i++) {
+            Vehicle car = carshop[i];
             if (minPrice <= car.getPrice() && car.getPrice() <= maxPrice) {
                 printVehicleInfo(car);
             }
@@ -112,7 +117,8 @@ public class VehicleInventory {
         String searchColor = input.nextLine();
 
         System.out.println("Here are cars matching that color:");
-        for (Vehicle car : carshop) {
+        for (int i = 0; i < currentInventory; i++) {
+            Vehicle car = carshop[i];
             if (car.getColor().toLowerCase().contains(searchColor.toLowerCase())) {
                 printVehicleInfo(car);
             }
@@ -127,6 +133,7 @@ public class VehicleInventory {
         System.out.println("Let's get the vehicle information first.");
         System.out.println("What is the Vehicle ID?");
         car.setVehicleID(input.nextLong());
+        input.nextLine();
         System.out.println("What is the make/model?");
         car.setMakeModel(input.nextLine());
         System.out.println("What is the color?");
@@ -135,7 +142,9 @@ public class VehicleInventory {
         car.setOdometerReading(input.nextInt());
         System.out.println("What will be the car's price?");
         car.setPrice(input.nextFloat());
+        input.nextLine();
 
+        System.out.println("This car has been added to the inventory.");
         carshop[currentInventory] = car;
         currentInventory++;
 
