@@ -8,14 +8,6 @@ public class Vehicle {
     private int odometerReading;
     private float price;
 
-    public Vehicle() {
-        this.vehicleID = 0;
-        this.makeModel = "";
-        this.color = "";
-        this.odometerReading = 0;
-        this.price = 0;
-    }
-
     public Vehicle(long vehicleID, String makeModel, String color, int odometerReading, float price) {
         this.vehicleID = vehicleID;
         this.makeModel = makeModel;

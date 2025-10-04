@@ -34,19 +34,19 @@ public class VehicleInventory {
 
             switch(option) {
                 case 1:
-                    listAllVehicles();
+                    listAllVehicles(carshop);
                     break;
                 case 2:
-                    searchByMakemodel(input);
+                    searchByMakemodel(carshop, input);
                     break;
                 case 3:
-                    searchByPrice(input);
+                    searchByPrice(carshop, input);
                     break;
                 case 4:
-                    searchByColor(input);
+                    searchByColor(carshop, input);
                     break;
                 case 5:
-                    addVehicle();
+                    addVehicle(carshop);
                 case 6:
                     isRunning = false;
                     System.out.println("ENDING PROGRAM...");
@@ -71,20 +71,37 @@ public class VehicleInventory {
 
     }
 
-    public static void listAllVehicles() {
+    public static void listAllVehicles(Vehicle[] carshop) {
 
-        int i;
-        for (i = 0; i < carshop.length; i++) {
+        for (int i = 0; i < carshop.length; i++) {
             Vehicle car = carshop[i];
-            System.out.printf("""
+            if (car != null) {
+                System.out.printf("""
                     Vehicle #%d. %s %s
-                    ID: %d, odometer reading: %d, price: %d
+                    ID: %d, odometer reading: %d, price: %.2f
                     """, i, car.getColor(), car.getMakeModel(), car.getVehicleID(),
-                    car.getOdometerReading(), car.getPrice());
+                        car.getOdometerReading(), car.getPrice());
+            }
         }
+
     }
 
+    public static void searchByMakemodel(Vehicle[] carshop, Scanner input) {
 
+        System.out.println("What make/model are you looking for?");
+        String searchMakemodel = input.nextLine();
+
+        for (Vehicle car : carshop) {
+            if (car.getMakeModel().contains(searchMakemodel)) {
+
+            }
+        }
+
+
+
+
+
+    }
 
 
 
