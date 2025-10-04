@@ -90,9 +90,35 @@ public class VehicleInventory {
 
     }
 
+    public static void searchByPrice(Vehicle[] carshop, Scanner input) {
 
+        System.out.println("What is the minimum you want to spend?");
+        int minPrice = input.nextInt();
+        System.out.println("What is the maximum you are willing to spend?");
+        int maxPrice = input.nextInt();
 
+        System.out.println("Here are cars that match your budget:");
+        for (Vehicle car : carshop) {
+            if (minPrice <= car.getPrice() && car.getPrice() <= maxPrice) {
+                printVehicleInfo(car);
+            }
+        }
 
+    }
+
+    public static void searchByColor(Vehicle[] carshop, Scanner input) {
+
+        System.out.println("What color are you looking for?");
+        String searchColor = input.nextLine();
+
+        System.out.println("Here are cars matching that color:");
+        for (Vehicle car : carshop) {
+            if (car.getColor().toLowerCase().contains(searchColor.toLowerCase())) {
+                printVehicleInfo(car);
+            }
+        }
+
+    }
 
 
 
