@@ -16,7 +16,7 @@ public class VehicleInventory {
         carshop[4] = new Vehicle(101125, "Subaru Outback", "Green", 55000, 14500);
         carshop[5] = new Vehicle(101126, "Jeep Wrangler", "Yellow", 30000, 16000);
 
-        currentInventory += 6;
+        currentInventory = 6;
 
         Scanner input = new Scanner(System.in);
 
@@ -48,7 +48,7 @@ public class VehicleInventory {
                     searchByColor(carshop, input);
                     break;
                 case 5:
-                    addVehicle(carshop);
+                    addVehicle(carshop, input);
                 case 6:
                     isRunning = false;
                     System.out.println("ENDING PROGRAM...");
@@ -120,9 +120,25 @@ public class VehicleInventory {
 
     }
 
+    public static void addVehicle(Vehicle[] carshop, Scanner input) {
 
+        Vehicle car = new Vehicle();
 
+        System.out.println("Let's get the vehicle information first.");
+        System.out.println("What is the Vehicle ID?");
+        car.setVehicleID(input.nextLong());
+        System.out.println("What is the make/model?");
+        car.setMakeModel(input.nextLine());
+        System.out.println("What is the color?");
+        car.setColor(input.nextLine());
+        System.out.println("What is the odometer reading?");
+        car.setOdometerReading(input.nextInt());
+        System.out.println("What will be the car's price?");
+        car.setPrice(input.nextFloat());
 
+        carshop[currentInventory] = car;
+        currentInventory++;
 
+    }
 
 }
